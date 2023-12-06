@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./DogList.css";
 
 function DogList({ dogs }) {
   return (
-    <div>
-      <div>
-        <div>
+    <div className="DogList">
+      <div className="row mt-4">
+        <div className="col">
           <h2>HELLO. WE HAVE DOGS. CLICK ON THEM FOR MORE INFO.</h2>
         </div>
       </div>

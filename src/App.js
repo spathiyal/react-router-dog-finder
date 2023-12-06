@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
-
+import "./App.css";
 import NavBar from "./NavBar";
 import RouteList from "./RouteList";
 
@@ -10,17 +10,22 @@ function App() {
     data: null,
     isLoading: true,
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadDogs() {
-      const response = await axios.get("http://localhost:5001/dogs");
+      const response = await axios.get("http://localhost:3001/dogs");
       setDogs({
         data: response.data,
         isLoading: false,
       });
+      setLoading(false);
     }
     loadDogs();
   }, []);
+  if (loading) {
+    return <p>Page is loading</p>;
+  }
   return (
     <div className="App">
       <h1>Find the dog, good luck!</h1>
